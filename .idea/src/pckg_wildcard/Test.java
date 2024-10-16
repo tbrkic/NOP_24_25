@@ -10,7 +10,5 @@ public class Test {
 		fstList.addNewElement ( 2 );
 		fstList.addNewElement ( 20 );
 		fstList.listAllElements();
-		List <User> users = new
-		AnotherList anotherList = new AnotherList ();
 	}
 }

@@ -14,5 +14,10 @@ public class AUX_CLS {
 	public static void addNewUser(List<? super User> users){
 		users.add(new User ( "Nikolina" ));
 	}
-	public static < T extends User> void processList ( List<T> )
+	public static < T extends User> void processList ( List<T> lst, T newElement ){
+		for(T element : lst){
+			System.out.println (element );
+		}
+		lst.add ( newElement );
+	}
 }
