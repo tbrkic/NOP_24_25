@@ -11,7 +11,7 @@ public class TestRun {
 		compooper.getCalculator ().setPower ( new PowerOfNumber () );
 		Scanner sc1= new Scanner ( System.in );
 		System.out.println ("This is a calculator app. You may type two numbers of any value followed by a operation(add, sub, div, mul or pow). Butt first, you may decide to stop if you type 'n'."  );
-		if ( sc1.next ( ).equals ( "n" ) ) {
+	d	if ( sc1.next ( ).equals ( "n" ) ) {
 		}
 		else {
 			compooper.doStuff ( );
