@@ -9,6 +9,6 @@ public class ViewPanel extends JPanel {
 		scrollPane = new JScrollPane (textArea,ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		LayoutManager BorderLayout = new BorderLayout ( );
 		setLayout ( BorderLayout );
-		
+		add(textArea);
 	}
 }
