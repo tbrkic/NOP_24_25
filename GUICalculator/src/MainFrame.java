@@ -1,8 +1,10 @@
+import java.awt.*;
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
 	private ViewPanel viewPanel;
 	private FormPanel formPanel;
+	private ToolBar toolBar;
 	public MainFrame(){
 		super ( "Basic GUI Calculator" );
 		setDefaultCloseOperation ( EXIT_ON_CLOSE );
@@ -16,9 +18,21 @@ public class MainFrame extends JFrame {
 	activateMainframe();
 	}
 	
-	private void activateMainframe ( ) { }
+	private void activateMainframe ( ) {
+		                                               formPanel.setFormPanelListener ( new FormPanelListener ( ) {
+			                                               @Override
+			                                               public void formPanelEventOccured ( CalculationFormData formRecord ) {
+				                                                viewPanel.addText ( formRecord.toString () );
+			                                               }
+		                                               } );
+	}
 	
-	private void LayoutComps ( ) { }
+	private void LayoutComps ( ) {
+		setLayout ( new BorderLayout (  ) );
+		add(viewPanel,BorderLayout.CENTER);
+		add(formPanel,BorderLayout.SOUTH);
+		add(toolBar, BorderLayout.NORTH);
+	}
 	
 	private void initComps ( ) {
 		viewPanel=new ViewPanel ();

@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -8,7 +9,13 @@ public class FormPanel extends JPanel {
 	private JTextField result;
 	private JComboBox<CalculationStrategy> operation;
 	private JButton confirm;
-	public FormPanel(){
+	private FormPanelListener formPanelListener;
+	
+	public void setFormPanelListener ( FormPanelListener formPanelListener ) {
+		this.formPanelListener = formPanelListener;
+	}
+	
+	public FormPanel ( ){
 		Dimension dims=this.getPreferredSize ();
 		
 		Border outer = BorderFactory.createEmptyBorder ( 5 , 5 , 5 , 5 );
@@ -77,5 +84,29 @@ public class FormPanel extends JPanel {
 		
 	}
 	
-	private void activateFormPanel ( ) { }
+	private void activateFormPanel ( ) {
+		confirm.addActionListener ( new ActionListener ( ) {
+			@Override
+			public void actionPerformed ( ActionEvent e ) {
+				System.out.println ("Calculating..." );
+			double	fst= Double.parseDouble ( fstNumber.getText () );
+			double snd = Double.parseDouble ( sndNumber.getText ( ) );
+			CalculationStrategy calculationStrategy = ( CalculationStrategy ) operation.getSelectedItem ( );
+			double res= calculationStrategy.performCalculation ( fst,snd );
+			result.setText (String.valueOf ( res )  );
+			CalculationFormData calculationForm = new CalculationFormData ( fst,snd,res,calculationStrategy );
+			if(formPanelListener!=null){
+				resetForm();
+			}
+			
+			}
+		} );
+	}
+	
+	private void resetForm ( ) {
+		fstNumber.setText ( "" );
+		sndNumber.setText ( "" );
+		result.setText ( "" );
+		operation.setSelectedIndex ( -1 );
+	}
 }

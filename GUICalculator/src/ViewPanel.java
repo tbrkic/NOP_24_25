@@ -11,4 +11,7 @@ public class ViewPanel extends JPanel {
 		setLayout ( BorderLayout );
 		add(textArea);
 	}
+	public void addText(String text){
+		textArea.append ( text );
+	}
 }
