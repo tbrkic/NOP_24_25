@@ -9,9 +9,9 @@ import java.util.List;
 
 import static gui_calculator_pckg.MainFrame.viewPanel;
 
-public class LoadDataBinStrategy implements LoadDataStrategy<CalculationFormData>{
+public class LoadDataBinStrategy implements LoadDataStrategy{
     @Override
-    public void loadDataFromFile(String filePath, List<CalculationFormData> data){
+    public void loadDataFromFile(String filePath){
         File file = new File(filePath);
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
             // Clear JTextArea

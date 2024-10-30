@@ -58,15 +58,18 @@ public class ToolBar extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getActionCommand().equals("Save TXT")) {
+        if(toolBarListener!=null){
+            toolBarListener.toolBarEventOccured ( saveAsText.getActionCommand () );
+        }
+        if (ae.getSource ()==saveAsText) {
             // Get text from JTextArea
             String text = viewPanel.getText();
             // Split text by new lines and convert it to a List
             List<String> textList = Arrays.asList(text.split("\\r?\\n"));
             SaveTxtStrategy sts = new SaveTxtStrategy();
-            sts.saveDataToFile("NOP-vjezbe/Strategy/src/gui_calculator_pckg/ListOfText", textList);
+            sts.saveDataToFile("ListOfText.txt", textList);
 
-        } else if (ae.getActionCommand().equals("Save BIN")) {
+        } else if (ae.getSource ()==saveObjects) {
             SaveBinStrategy sbs = new SaveBinStrategy();
             List<CalculationFormData> list = viewPanel.getListOfObjects();
             List<CalculationFormObjects> list2 = new ArrayList<>();
@@ -74,20 +77,22 @@ public class ToolBar extends JPanel implements ActionListener {
                 CalculationFormObjects cfo = new CalculationFormObjects(cfd.fst(), cfd.snd(), cfd.result(), cfd.calStrat());
                 list2.add(cfo);
             }
-            sbs.saveDataToFile("NOP-vjezbe/Strategy/src/gui_calculator_pckg/ListOfObjects.bin", list2);
+            sbs.saveDataToFile("ListOfObjects.bin", list2);
 
-        } else if (ae.getActionCommand().equals("Load TXT")) {
+        } else if (ae.getSource ()==loadText) {
             LoadDataTxtStrategy ldts = new LoadDataTxtStrategy();
-            ldts.loadDataFromFile("NOP-vjezbe/Strategy/src/gui_calculator_pckg/ListOfText", viewPanel.getListOfObjects());
+            ldts.loadDataFromFile("ListOfText.txt", viewPanel.getListOfObjects());
 
-        } else if (ae.getActionCommand().equals("Load BIN")) {
+        } else if (ae.getSource ()==loadObjects) {
             LoadDataBinStrategy ldbs = new LoadDataBinStrategy();
-            ldbs.loadDataFromFile("NOP-vjezbe/Strategy/src/gui_calculator_pckg/ListOfObjects.bin", viewPanel.getListOfObjects());
+            ldbs.loadDataFromFile("ListOfObjects.bin", viewPanel.getListOfObjects());
 
-        } else if( ae.getActionCommand().equals("Clear all")) {
+        } else if( ae.getSource ()==clearAll) {
             viewPanel.clearAll();
         }
     }
-
-
+    
+    public void setToolBarListener ( ToolBarListener toolBarListener ) {
+        this.toolBarListener = toolBarListener;
+    }
 }
