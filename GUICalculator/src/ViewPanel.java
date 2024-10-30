@@ -14,4 +14,8 @@ public class ViewPanel extends JPanel {
 	public void addText(String text){
 		textArea.append ( text );
 	}
+	
+	public String getText ( ) {
+		return textArea.getText ( );
+	}
 }

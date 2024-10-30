@@ -1,0 +1,49 @@
+package gui_calculator_pckg;
+
+import java.awt.*;
+import javax.swing.*;
+
+public class MainFrame extends JFrame {
+
+    static ViewPanel viewPanel;
+    private FormPanel formPanel;
+    private ToolBar toolBar;
+
+    public MainFrame() {
+
+        super("Simple calculator");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setSize(680, 570);
+        setVisible(true);
+
+        initComps();
+        layoutComps();
+        activateMainFrame();
+    }
+
+    private void activateMainFrame() {
+
+        formPanel.setFormPanelListener(new FormPanelListener() {
+            @Override
+            public void formPanelEventOccurred(CalculationFormData formRecord) {
+                viewPanel.addTextToViewPanel(formRecord);
+            }
+        });
+    }
+
+    private void layoutComps() {
+        setLayout(new BorderLayout());
+        add(viewPanel, BorderLayout.CENTER);
+        add(formPanel, BorderLayout.SOUTH);
+        add(toolBar, BorderLayout.NORTH);
+    }
+
+    private void initComps() {
+
+        viewPanel = new ViewPanel();
+        formPanel = new FormPanel();
+        toolBar = new ToolBar();
+    }
+}
