@@ -1,0 +1,6 @@
+1. realizirati strategiju za spremanje objekata klase CalculationFormData
+2. realizirati strat. za čitanje tih objekata iz .bin datoteke
+3. "hard coded" file path zamijeniti s JFileChooser-> default folder "DATA" unutar glavnog modula
+4. čitanje podataka iz datoteke rišit na način da se prvo trenutni podaci, ako ih ima spreme
+5. osigurati provjere unosa za formu s pripadnim porukama
+6. obavezno ispravno primijeniti upravljanje iznimkama
