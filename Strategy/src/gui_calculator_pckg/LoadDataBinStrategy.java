@@ -6,13 +6,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.List;
+import javax.swing.*;
 
 import static gui_calculator_pckg.MainFrame.viewPanel;
 
 public class LoadDataBinStrategy implements LoadDataStrategy{
     @Override
-    public void loadDataFromFile(String filePath){
-        File file = new File(filePath);
+    public void loadDataFromFile( JFileChooser jFileChooser ){
+        File file = new File( String.valueOf ( jFileChooser ) );
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
             // Clear JTextArea
             viewPanel.clearAll();

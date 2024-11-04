@@ -1,6 +1,7 @@
 package gui_calculator_pckg;
 
 import java.awt.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
@@ -41,14 +42,16 @@ public class MainFrame extends JFrame {
             public void toolBarEventOccured ( String buttonActionString ) {
                 if(buttonActionString.equals ( "SAVE TXT" )){
                     SaveTxtStrategy saveTxtStrategy=new SaveTxtStrategy ();
-                    saveTxtStrategy.saveDataToFile ( "DataTXT.txt",txtData );
+                    saveTxtStrategy.saveDataToFile ( "DATA/DataTXT.txt",txtData );
                 }   else if(buttonActionString.equals ( "Clear all" )){
                  txtData.clear ();
                     viewPanel.clearAll ();
-                    JOptionPane.showMessageDialog ( this,"List has been cleared!!!" );
-                } else if(buttonActionString.equals ( "Load text" )){
+                    System.out.println ( "List has been cleared!!!" );
+                } else if(buttonActionString.equals ( "Load TXT" )){
                     LoadDataTxtStrategy loadDataTxtStrategy=new LoadDataTxtStrategy ();
-                    loadDataTxtStrategy.loadDataFromFile ( "DataTXT.txt", );
+                    loadDataTxtStrategy.loadDataFromFile ( new JFileChooser ( new File ( "DATA" ) ));
+                    SaveTxtStrategy sts=new SaveTxtStrategy ();
+                    sts.saveDataToFile ( "DATA/DataTXT.txt",txtData );
                 }
                 
             }

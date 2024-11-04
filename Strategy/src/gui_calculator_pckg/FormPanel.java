@@ -2,6 +2,7 @@ package gui_calculator_pckg;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.InputMismatchException;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -114,15 +115,20 @@ public class FormPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Test for button activation");
-                double fst = Double.parseDouble(fstNumField.getText());
+                
+                try{double fst = Double.parseDouble(fstNumField.getText());
                 double snd = Double.parseDouble(sndNumField.getText());
                 CalculationStrategy calculationStrategy = (CalculationStrategy) operationBox.getSelectedItem();
                 double result = calculationStrategy.performCalculation(fst, snd);
                 resultField.setText(String.valueOf(result));
                 CalculationFormData calculationRecord = new CalculationFormData(fst, snd, result, calculationStrategy);
-                if(formPanelListener != null){
-                    formPanelListener.formPanelEventOccurred(calculationRecord);
-                    resetForm();
+                    if ( formPanelListener != null ) {
+                        formPanelListener.formPanelEventOccurred ( calculationRecord );
+                        resetForm ( );
+                    }
+                } catch ( NumberFormatException nfe ){
+                    nfe.printStackTrace ();
+                    System.out.println ("Entered value must be numerical!!!!!!!!!" );
                 }
             }
         });

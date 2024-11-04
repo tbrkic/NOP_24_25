@@ -2,6 +2,7 @@ package gui_calculator_pckg;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -58,16 +59,16 @@ public class ToolBar extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+        // Get text from JTextArea
+        String text = viewPanel.getText ( );
+        // Split text by new lines and convert it to a List
+        List < String > textList = Arrays.asList ( text.split ( "\\r?\\n" ) );
         if(toolBarListener!=null){
             toolBarListener.toolBarEventOccured ( saveAsText.getActionCommand () );
         }
         if (ae.getSource ()==saveAsText) {
-            // Get text from JTextArea
-            String text = viewPanel.getText();
-            // Split text by new lines and convert it to a List
-            List<String> textList = Arrays.asList(text.split("\\r?\\n"));
             SaveTxtStrategy sts = new SaveTxtStrategy();
-            sts.saveDataToFile("ListOfText.txt", textList);
+            sts.saveDataToFile("DATA/ListOfText.txt", textList);
 
         } else if (ae.getSource ()==saveObjects) {
             SaveBinStrategy sbs = new SaveBinStrategy();
@@ -77,18 +78,16 @@ public class ToolBar extends JPanel implements ActionListener {
                 CalculationFormObjects cfo = new CalculationFormObjects(cfd.fst(), cfd.snd(), cfd.result(), cfd.calStrat());
                 list2.add(cfo);
             }
-            sbs.saveDataToFile("ListOfObjects.bin", list2);
-
-        } else if (ae.getSource ()==loadText) {
-            LoadDataTxtStrategy ldts = new LoadDataTxtStrategy();
-            ldts.loadDataFromFile("ListOfText.txt", viewPanel.getListOfObjects());
-
-        } else if (ae.getSource ()==loadObjects) {
-            LoadDataBinStrategy ldbs = new LoadDataBinStrategy();
-            ldbs.loadDataFromFile("ListOfObjects.bin", viewPanel.getListOfObjects());
+            sbs.saveDataToFile("DATA/ListOfObjects.bin", list2);
 
         } else if( ae.getSource ()==clearAll) {
             viewPanel.clearAll();
+        }
+        else if ( ae.getSource ()==loadText) {
+            LoadDataTxtStrategy loadDataTxtStrategy = new LoadDataTxtStrategy ( );
+            loadDataTxtStrategy.loadDataFromFile ( new JFileChooser ( ) );
+           if(viewPanel.getText ()!=""){ SaveTxtStrategy sts = new SaveTxtStrategy ( );
+            sts.saveDataToFile ( "DATA/DataTXT.txt" , textList );}
         }
     }
     
