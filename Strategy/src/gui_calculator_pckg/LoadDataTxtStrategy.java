@@ -12,7 +12,7 @@ import static gui_calculator_pckg.MainFrame.viewPanel;
 
 public class LoadDataTxtStrategy implements LoadDataStrategy{
     @Override
-    public void loadDataFromFile( JFileChooser jFileChooser ) {
+    public void loadDataFromFile( File jFileChooser ) {
         File file = new File( String.valueOf ( jFileChooser ) );
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             viewPanel.read(reader, null); // Reads file content into JTextArea

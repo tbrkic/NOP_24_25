@@ -85,7 +85,9 @@ public class ToolBar extends JPanel implements ActionListener {
         }
         else if ( ae.getSource ()==loadText) {
             LoadDataTxtStrategy loadDataTxtStrategy = new LoadDataTxtStrategy ( );
-            loadDataTxtStrategy.loadDataFromFile ( new JFileChooser ( ) );
+            JFileChooser jFileChooser = new JFileChooser ("DATA");
+            jFileChooser.showOpenDialog ( new JFrame (  ) );
+            loadDataTxtStrategy.loadDataFromFile (jFileChooser.getSelectedFile () );
            if(viewPanel.getText ()!=""){ SaveTxtStrategy sts = new SaveTxtStrategy ( );
             sts.saveDataToFile ( "DATA/DataTXT.txt" , textList );}
         }

@@ -49,7 +49,9 @@ public class MainFrame extends JFrame {
                     System.out.println ( "List has been cleared!!!" );
                 } else if(buttonActionString.equals ( "Load TXT" )){
                     LoadDataTxtStrategy loadDataTxtStrategy=new LoadDataTxtStrategy ();
-                    loadDataTxtStrategy.loadDataFromFile ( new JFileChooser ( new File ( "DATA" ) ));
+                    JFileChooser jFileChooser = new JFileChooser ( "DATA" );
+                    jFileChooser.showOpenDialog ( new JFrame ( ) );
+                    loadDataTxtStrategy.loadDataFromFile ( jFileChooser.getSelectedFile ( ) );
                     SaveTxtStrategy sts=new SaveTxtStrategy ();
                     sts.saveDataToFile ( "DATA/DataTXT.txt",txtData );
                 }

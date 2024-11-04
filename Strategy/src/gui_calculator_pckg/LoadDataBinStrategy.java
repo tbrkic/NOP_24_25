@@ -12,7 +12,7 @@ import static gui_calculator_pckg.MainFrame.viewPanel;
 
 public class LoadDataBinStrategy implements LoadDataStrategy{
     @Override
-    public void loadDataFromFile( JFileChooser jFileChooser ){
+    public void loadDataFromFile( File jFileChooser ){
         File file = new File( String.valueOf ( jFileChooser ) );
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
             // Clear JTextArea
