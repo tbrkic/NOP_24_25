@@ -1,0 +1,1 @@
+package pckg_strategy.pckg_POWAHZ;public class FlyingStrategy implements PowahStrategy{	@Override	public void applyPOWAH ( ) {		System.out.println ( "This person can fly!!! No vehicle needed!!!!!" );		}}
