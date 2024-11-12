@@ -15,7 +15,9 @@ public class Client <E>{
 	public void removeFetchedElement(){
 		if(iterator.hasNext ()){
 			E element = iterator.next ( );
+			System.out.println ("Fetched: "+element);
 			iterator.remove ();
+			System.out.println ("Removed fetched element!" );
 		}
 	}
 }
