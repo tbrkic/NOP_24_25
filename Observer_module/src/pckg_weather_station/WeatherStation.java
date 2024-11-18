@@ -2,14 +2,13 @@ package pckg_weather_station;
 
 import java.util.ArrayList;
 import java.util.List;
-import weather_station_pckg.ObservableMeteoStation;
-import weather_station_pckg.Observer;
 
 public class WeatherStation implements ObservableMeteoStation {
 	private double temperature;
 	private double humidity;
 	private double pressure;
-	private final List < weather_station_pckg.Observer > observers;
+	private boolean isChanged;
+	private final List < Observer > observers;
 	
 	public WeatherStation ( double temperature , double humidity , double pressure ) {
 		this.temperature = temperature;
@@ -19,7 +18,7 @@ public class WeatherStation implements ObservableMeteoStation {
 	}
 	
 	@Override
-	public void add ( weather_station_pckg.Observer observer ) {
+	public void add ( pckg_weather_station.Observer observer ) {
 	if(observers.contains ( observer )){
 		System.out.println ("Observer is already in list!!!" );
 	}else{
@@ -29,16 +28,19 @@ public class WeatherStation implements ObservableMeteoStation {
 	}
 	
 	@Override
-	public void remove ( weather_station_pckg.Observer observer ) {
+	public void remove ( pckg_weather_station.Observer observer ) {
 	
 	}
 	
 	@Override
 	public void notifyAllObservers ( ) {
-	for( Observer i:observers){
-	i.update ();
+		if(!observers.isEmpty ( ) ){
+	for( pckg_weather_station.Observer i:observers){
+	i.update (pressure,temperature,humidity);
 	}
-	}
+	}else {
+			System.out.println ("There are no observers to notify!!!" );
+		}   }
 	
 	public double getTemperature ( ) {
 		return temperature;
@@ -56,6 +58,13 @@ public class WeatherStation implements ObservableMeteoStation {
 		this.pressure=p;
 		this.temperature=t;
 		System.out.println ("States set!" );
+		notifyAllObservers ();
+	}
+	private void stateChanged(double p, double t, double h){
+		this.humidity=h;
+		this.pressure=p;
+		this.temperature=t;
+		System.out.println ("States have been changed!!!" );
 		notifyAllObservers ();
 	}
 }
