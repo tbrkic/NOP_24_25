@@ -1,7 +1,7 @@
-package pckg_no_factory;
+package pckg_newpckg;
 
-public class SUV extends Car{
-	public SUV ( String brand , String model ) {
+public class EU_SUV extends Car {
+	public EU_SUV ( String brand , String model ) {
 		super ( brand , model );
 	}
 	

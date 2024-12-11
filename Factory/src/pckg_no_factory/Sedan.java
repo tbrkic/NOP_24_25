@@ -12,7 +12,7 @@ public class Sedan  extends Car{
 	
 	@Override
 	public String toString ( ) {
-		return "Sedan{" +
+		return "EU_Sedan{" +
 		       "brand='" + brand + '\'' +
 		       ", model='" + model + '\'' +
 		       '}';

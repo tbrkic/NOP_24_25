@@ -1,7 +1,7 @@
-package pckg_no_factory;
+package pckg_newpckg;
 
-public class SUV extends Car{
-	public SUV ( String brand , String model ) {
+public class UK_Sedan extends Car {
+	public UK_Sedan ( String brand , String model ) {
 		super ( brand , model );
 	}
 	
@@ -12,7 +12,7 @@ public class SUV extends Car{
 	
 	@Override
 	public String toString ( ) {
-		return "EU_SUV{" +
+		return "EU_Sedan{" +
 		       "brand='" + brand + '\'' +
 		       ", model='" + model + '\'' +
 		       '}';
