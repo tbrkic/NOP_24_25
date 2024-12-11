@@ -1,1 +1,2 @@
 Mercedes, Z, Sedan
+Tesla, Cybertruck, SUV
