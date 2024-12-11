@@ -6,8 +6,7 @@ import java.util.List;
 public abstract class BatchProcessor {
 	
 	public final void processBatch ( File file ) {
-		
-		FileParser parser = null;
+		FileParser parser;
 		parser = createFileParser ( );
 		List < Record > records = parser.parse ( file );
 		processRecords ( records );
@@ -22,11 +21,11 @@ public abstract class BatchProcessor {
 	}
 	
 	private void writeSummary ( ) {
-		System.out.println ( "Writing summary related to parsing process ..." );
+		System.out.println ( "Writing summary related to parsing process..." );
 	}
 	
 	private void closeFile ( File file ) {
-		System.out.println ( "Closed file -> " + file.toString ( ) );
+		System.out.println ( "Closed file ---->   " + file.toString ( ) );
 	}
 	
 }

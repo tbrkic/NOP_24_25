@@ -1,6 +1,6 @@
 package pckg_icecream;
 
-public class Chocolate extends AbsIceCream{
+public class Chocolate extends IceCream {
 	public Chocolate ( String name , double unitPrice , int amount ) {
 		super ( name , unitPrice , amount );
 	}

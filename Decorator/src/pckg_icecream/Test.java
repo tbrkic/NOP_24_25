@@ -6,7 +6,8 @@ public class Test {
 		ch1.calculatePrice ();
 		ch1.description ();
 		HoneyOverflow honeyOverflow=new HoneyOverflow ( "Honey Overflow" ,0.5,1,ch1);
-		double finalPrice= honeyOverflow.decoratedPrice ();
+		honeyOverflow.decoratedPrice ( );
+		double finalPrice;
 		Hazelnut hazelnut = new Hazelnut ( "Hazelnut",0.5,1,honeyOverflow );
 		finalPrice= hazelnut.decoratedPrice ( );
 		System.out.println (finalPrice );

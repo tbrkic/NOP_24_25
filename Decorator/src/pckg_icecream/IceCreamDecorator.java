@@ -1,12 +1,16 @@
 package pckg_icecream;
 
-public abstract class IceCreamDecorator extends AbsIceCream{
-	AbsIceCream component;
-	public IceCreamDecorator ( String name , double unitPrice , int amount, AbsIceCream component ) {
+public class IceCreamDecorator extends IceCream {
+	IceCream component;
+	public IceCreamDecorator ( String name , double unitPrice , int amount, IceCream component ) {
 		super ( name , unitPrice , amount );
 		this.component=component;
 	}
-protected abstract double decoratedPrice();
+	
+	protected double decoratedPrice ( ) {
+		return 0;
+	}
+	
 	@Override
 	protected double calculatePrice ( ) {
 	double price = this.component.calculatePrice ()+unitPrice*amount;

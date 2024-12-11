@@ -10,7 +10,7 @@ public class WriterAdapter implements WriterInt {
 	
 	@Override
 	public void writeNovel ( int novelType ) {
-		if ( novelType == ( int ) novelType ) {
+		if ( novelType == novelType ) {
 			oNov.writeSFNovel ( );
 		}
 		else {
